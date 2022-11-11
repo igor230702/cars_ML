@@ -56,10 +56,10 @@ def main():
             os.mkdir(folder_path)
 
         url = f"https://auto.drom.ru/all/page{i+1}/"
-        # req = requests.get(url)
-        # with open(rf"{folder_path}/cars_{i+1}.html", 'w', encoding='utf-8') as file:
-        #     file.write(req.text)
-        # print(req.status_code)
+        req = requests.get(url)
+        with open(rf"{folder_path}/cars_{i+1}.html", 'w', encoding='utf-8') as file:
+            file.write(req.text)
+        print(req.status_code)
 
         with open(rf"{folder_path}/cars_{i+1}.html", encoding='utf-8') as file:
             src = file.read()
@@ -77,10 +77,10 @@ def main():
         for j, car_url in enumerate(car_urls):
             file_name = f"{j+1}_{car_url.split('/')[3]}"
 
-            # req = requests.get(car_url, headers)
-            # with open(rf"{folder_path}\{file_name}.html", 'w', encoding='utf-8') as file:
-            #     file.write(req.text)
-            # print(f"№{j + 1}: {req.status_code}")
+            req = requests.get(car_url, headers)
+            with open(rf"{folder_path}\{file_name}.html", 'w', encoding='utf-8') as file:
+                file.write(req.text)
+            print(f"№{j + 1}: {req.status_code}")
 
             with open(rf"{folder_path}\{file_name}.html",
                       encoding='utf-8') as file:
@@ -106,9 +106,9 @@ def main():
             except Exception:
                 print('Не получилось')
 
-        # time.sleep(random.randrange(2, 4))
-        # if i % 10 == 0:
-        #     time.sleep(random.randrange(20, 30))
+        time.sleep(random.randrange(2, 4))
+        if i % 10 == 0:
+            time.sleep(random.randrange(20, 30))
 
     # Обработаем данные, чтобы с нимми можно было работать: переименуем столбцы и вычленим численые значения:
 
